@@ -1,6 +1,7 @@
 package edu.masanz.da.crudj;
 
 import edu.masanz.da.crudj.controller.NotaController;
+import edu.masanz.da.crudj.controller.InventarioController;
 
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinFreemarker;
@@ -15,6 +16,8 @@ public class Main {
     public static void main(String[] args) {
 
         logger.info("ARRANCANDO APLICACION");
+
+        Inventario.inicializarInventario
 
         Javalin app = Javalin.create(config -> {
             config.staticFiles.add("public");
@@ -31,6 +34,10 @@ public class Main {
         app.get("/elimina-nota/{id}", NotaController::servirEliminarNota);
         app.post("/elimina-nota/{id}", NotaController::eliminarNota);
         app.get("/error", NotaController::servirError);
+
+
+        // Inventario
+        app.get("/error", InventarioController::listarItems);
 
     }
 

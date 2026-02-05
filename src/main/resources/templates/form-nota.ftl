@@ -6,36 +6,47 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
-    <h1>CREAR O EDITAR NOTA</h1>
-    <a href="/html/lista-notas.html">Regresar al listado</a>
+    <#if agregar>
+        <h1>CREAR NOTA</h1>
+    <#else>
+        <h1>EDITAR NOTA</h1>
+    </#if>
+    
+    <a href="/lista-notas">Regresar al listado</a>
+
     <br/><br/>
 
-    <div class="error">MENSAJE DE ERROR CUANDO LO HAYA</div>
+    <#if mensajeError??>
+        <div class="error">${mensajeError}</div>
+    </#if>
 
-    <!-- TIENE QUE SER POST -->
-    <form action="/html/lista-notas.html" method="GET">
+    <#assign destino = "/edita-nota/"+nota.id>
+    <#if agregar>
+        <#assign destino = "/crea-nota">
+    </#if>
+    <form action="${destino}" method="POST">
         <div class="container">
             <div class="w75">
                 <label for="titulo">Título</label>
-                <input type="text" name="titulo" value="Título">
+                <input type="text" name="titulo" value="${nota.titulo}">
             </div>
             <div class="w25 center">
                 <label for="id">ID</label>
-                <input type="text" name="id" value="11" disabled="disabled">
+                <input type="text" name="id" value="${nota.id}" disabled="disabled">
             </div>
         </div>
 
         <label for="contenido">Contenido</label>
-        <textarea name="contenido">Contenido de la nota</textarea>
+        <textarea name="contenido">${nota.contenido}</textarea>
 
         <div class="container">
             <div class="w50 center">
                 <label for="creado">Creado</label>
-                <input type="text" name="creado" value="2026-01-29 13:17:15" disabled="disabled">
+                <input type="text" name="creado" value="${nota.creado}" disabled="disabled">
             </div>
             <div class="w50 center">
                 <label for="creado">Actualizado</label>
-                <input type="text" name="creado" value="2026-01-29 13:17:15" disabled="disabled">
+                <input type="text" name="creado" value="${nota.modificado}" disabled="disabled">
             </div>
         </div>
 

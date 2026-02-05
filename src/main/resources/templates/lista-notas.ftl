@@ -8,74 +8,45 @@
 <body>
 <h1>Listado de notas</h1>
 <div>
-    <a class="btn" href="/index.ftl">Volver al inicio</a>
-    <a class="btn" href="/form-nota.ftl">Añadir nota</a>
+    <a class="btn" href="/">Volver al inicio</a>
+    <a class="btn" href="/crea-nota">Añadir nota</a>
 </div>
 <br/><br/>
 <div>
     <table id="notas">
-        <tbody><tr>
-            <th>ID</th>
-            <th>Título</th>
-            <th>Contenido</th>
-            <th>Creado</th>
-            <th>Modificado</th>
-            <th>Actualizar</th>
-            <th>Eliminar</th>
-        </tr>
-        <tr>
-            <td><a href="/html/nota.html?nota=1">12</a></td>
-            <td>Banco</td>
-            <td>Anular transferencia mensual</td>
-            <td>2024-04-29 10:00:00</td>
-            <td>2024-04-29 10:00:00</td>
-            <td><a href="/html/form-nota.html?nota=1">Editar</a></td>
-            <td><a href="/html/nota.html?nota=1">Borrar</a></td>
-        </tr>
-        <tr>
-            <td><a href="/html/nota.html?nota=1">11</a></td>
-            <td>Ropa boda</td>
-            <td>Reservar un día para probar ropa</td>
-            <td>2024-04-29 10:00:00</td>
-            <td>2024-04-29 10:00:00</td>
-            <td><a href="/html/form-nota.html?nota=1">Editar</a></td>
-            <td><a href="/html/nota.html?nota=1">Borrar</a></td>
-        </tr>
-        <tr>
-            <td><a href="/html/nota.html?nota=1">10</a></td>
-            <td>Perro bonito</td>
-            <td>Vacunar al perro</td>
-            <td>2024-04-29 10:00:00</td>
-            <td>2026-01-29 13:05:14</td>
-            <td><a href="/html/form-nota.html?nota=1">Editar</a></td>
-            <td><a href="/html/nota.html?nota=1">Borrar</a></td>
-        </tr>
-        <tr>
-            <td><a href="/html/nota.html?nota=1">9</a></td>
-            <td>Revisión médica</td>
-            <td>Pedir cita un lunes o miércoles</td>
-            <td>2024-04-29 10:00:00</td>
-            <td>2024-04-29 10:00:00</td>
-            <td><a href="/html/form-nota.html?nota=1">Editar</a></td>
-            <td><a href="/html/nota.html?nota=1">Borrar</a></td>
-        </tr>
-        <tr>
-            <td><a href="/html/nota.html?nota=1">8</a></td>
-            <td>Antivirus</td>
-            <td>Preguntar antivirus para el móvil</td>
-            <td>2024-04-29 10:00:00</td>
-            <td>2024-04-29 10:00:00</td>
-            <td><a href="/html/form-nota.html?nota=1">Editar</a></td>
-            <td><a href="/html/nota.html?nota=1">Borrar</a></td>
-        </tr>
+        <tbody>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>Contenido</th>
+                <th>Creado</th>
+                <th>Modificado</th>
+                <th>Actualizar</th>
+                <th>Eliminar</th>
+            </tr>
+            <#list notas as nota>
+                <tr>
+                    <td><a href="/nota/${nota.id}">${nota.id}</a></td>
+                    <td>${nota.titulo}</td>
+                    <td>${nota.contenido}</td>
+                    <td>${nota.creado}</td>
+                    <td>${nota.modificado}</td>
+                    <td><a href="/edita-nota/${nota.id}">Editar</a></td>
+                    <td><a href="/elimina-nota/${nota.id}">Borrar</a></td>
+                </tr>
+            </#list>
         </tbody>
     </table>
 </div>
 <br/><br/>
 <div>
     <nobr>
-        <a class="btn" href="/html/lista-notas.html?pagina=1">Anterior</a>&nbsp;&nbsp;&nbsp;
-        <a class="btn" href="/html/lista-notas.html?pagina=1">Siguiente</a>
+        <#if tieneAnterior>
+            <a class="btn" href="/lista-notas?pagina=${paginaAnterior}">Anterior</a>&nbsp;&nbsp;&nbsp;
+        </#if>
+        <#if tieneSiguiente>
+            <a class="btn" href="/lista-notas?pagina=${paginaSiguiente}">Siguiente</a>
+        </#if>
     </nobr>
 </div>
 </body>

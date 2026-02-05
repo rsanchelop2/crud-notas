@@ -41,11 +41,11 @@
 <br/><br/>
 <div>
     <nobr>
-        <#if (tieneAnterior)>
-            <a class="btn" href="/lista-notas?pagina=${paginaAnterior}">Anterior</a>&nbsp;&nbsp;&nbsp;    
+        <#if tieneAnterior>
+            <a class="btn" href="/lista-notas?pagina=${paginaAnterior}">Anterior</a>&nbsp;&nbsp;&nbsp;
         </#if>
-        <#if (tieneSiguiente)>
-            <a class="btn" href="/lista-notas?pagina=${paginaSiguiente}">Siguiente</a>    
+        <#if tieneSiguiente>
+            <a class="btn" href="/lista-notas?pagina=${paginaSiguiente}">Siguiente</a>
         </#if>
     </nobr>
 </div>

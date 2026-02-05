@@ -6,60 +6,47 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body>
-    <#assign destino = "/edita-nota/"+nota.id> 
-    <#if (agregar)>
+    <#if agregar>
         <h1>CREAR NOTA</h1>
-        <#assign destino = "/crea-nota"> 
-    <#else>    
+    <#else>
         <h1>EDITAR NOTA</h1>
     </#if>
     
-    
     <a href="/lista-notas">Regresar al listado</a>
+
     <br/><br/>
 
-    <#if (mensajeError??)>
-        <div class="error">MENSAJE DE ERROR CUANDO LO HAYA</div>    
+    <#if mensajeError??>
+        <div class="error">${mensajeError}</div>
     </#if>
-    
 
-    <!-- TIENE QUE SER POST -->
+    <#assign destino = "/edita-nota/"+nota.id>
+    <#if agregar>
+        <#assign destino = "/crea-nota">
+    </#if>
     <form action="${destino}" method="POST">
-        <#if (agregar)>
-            <#assign titulo = ""> 
-            <#assign id = " "> 
-            <#assign contenido = ""> 
-        <#else>
-            <#assign titulo = nota.titulo> 
-            <#assign id = nota.id> 
-            <#assign contenido = nota.contenido> 
-        </#if>
-    
         <div class="container">
             <div class="w75">
-                <label for="titulo">Titulo</label>
-                <input type="text" name="titulo" value=${titulo}>
+                <label for="titulo">Título</label>
+                <input type="text" name="titulo" value="${nota.titulo}">
             </div>
-            <#if (!agregar)>
-                <div class="w25 center">
-                    <label for="id">Id</label>
-                    <input type="text" name="id" value=${id} disabled="disabled">
-                </div>    
-            </#if>
-            
+            <div class="w25 center">
+                <label for="id">ID</label>
+                <input type="text" name="id" value="${nota.id}" disabled="disabled">
+            </div>
         </div>
 
         <label for="contenido">Contenido</label>
-        <textarea name="contenido">${contenido}</textarea>
+        <textarea name="contenido">${nota.contenido}</textarea>
 
         <div class="container">
             <div class="w50 center">
                 <label for="creado">Creado</label>
-                <input type="text" name="creado" value="${nota.modificado}" disabled="disabled">
+                <input type="text" name="creado" value="${nota.creado}" disabled="disabled">
             </div>
             <div class="w50 center">
                 <label for="creado">Actualizado</label>
-                <input type="text" name="creado" value="${nota.creado}" disabled="disabled">
+                <input type="text" name="creado" value="${nota.modificado}" disabled="disabled">
             </div>
         </div>
 

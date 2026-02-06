@@ -9,8 +9,8 @@
     <div class="container">
         <h1>${encabezado}</h1>
         <p class="center">Acceso a la aplicación</p>
-        <br/><br/>
         <a class="center" href="/lista-notas">Notas</a>
+        <a class="center" href="/lista-items">Inventario</a>
     </div>
 </body>
 </html>

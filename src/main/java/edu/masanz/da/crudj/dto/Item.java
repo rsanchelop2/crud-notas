@@ -1,41 +1,24 @@
 package edu.masanz.da.crudj.dto;
 
-import java.util.Arrays;
-
 public class Item {
+
+    private int id;
     private String nombre;
     private int cantidad;
+    private String imagen;
 
-    String[] items = {
-            "Espada de Hierro",
-            "Poción de Vida",
-            "Escudo de Madera",
-            "Amuleto de Maná",
-            "Daga de Cobre"
-    };
-
-    public Item(String nombre, int cantidad) {
-        this.cantidad = cantidad;
-        this.nombre = nombre;
-    }
     public Item() {
-        nombre = asignarNombre();
-        cantidad = cantidadAleatoria();
+
     }
 
-    private int cantidadAleatoria() {
-        int n = (int) (Math.random() * 64) + 1;
-        return n;
+    public Item(int id, String nombre, int cantidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.cantidad = cantidad;
+        this.imagen = "";
     }
 
-    private String asignarNombre() {
-        int n = (int) (Math.random() * items.length);
-        String objetoAleatorio = items[n];
-        return objetoAleatorio;
-    }
-
-    // region Getter y Setters
-     public String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
@@ -50,15 +33,29 @@ public class Item {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    // endregion
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 
     @Override
     public String toString() {
         return "Item{" +
-                "nombre='" + nombre + '\'' +
+                "id='" + id + '\'' +
+                ", nombre='" + nombre + '\'' +
                 ", cantidad=" + cantidad +
-                ", items=" + Arrays.toString(items) +
                 '}';
     }
 }

@@ -3,6 +3,7 @@ package edu.masanz.da.crudj;
 import edu.masanz.da.crudj.controller.NotaController;
 import edu.masanz.da.crudj.controller.InventarioController;
 
+import edu.masanz.da.crudj.dao.InventarioDAO;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinFreemarker;
 
@@ -17,7 +18,7 @@ public class Main {
 
         logger.info("ARRANCANDO APLICACION");
 
-        Inventario.inicializarInventario
+        InventarioDAO.inicializarInventario();
 
         Javalin app = Javalin.create(config -> {
             config.staticFiles.add("public");

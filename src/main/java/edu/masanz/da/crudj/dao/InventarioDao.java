@@ -69,8 +69,10 @@ public class InventarioDao {
         return items;
     }
 
-    public static void crearItem(String nombreItem, int cantidad) {
-        inventario.put(contador, new Item(contador, nombreItem, cantidad));
+    public static void crearItem(String nombreItem, int cantidad, String textoImagen) {
+        Item item = new Item(contador, nombreItem, cantidad);
+        item.setImagen(textoImagen);
+        inventario.put(contador, item);
         contador++;
     }
 }

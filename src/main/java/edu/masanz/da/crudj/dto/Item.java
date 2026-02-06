@@ -5,6 +5,7 @@ public class Item {
     private int id;
     private String nombre;
     private int cantidad;
+    private String imagen;
 
     public Item() {
 
@@ -14,6 +15,7 @@ public class Item {
         this.id = id;
         this.nombre = nombre;
         this.cantidad = cantidad;
+        this.imagen = "";
     }
 
     public String getNombre() {
@@ -38,6 +40,14 @@ public class Item {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
     }
 
     @Override

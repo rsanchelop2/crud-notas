@@ -12,6 +12,17 @@ public class ImageConvertor {
         imgToBase64();
     }
 
+    public static void imgToBase64(File file){
+        byte[] fileContent = null;
+        try {
+            fileContent = FileUtils.readFileToByteArray(file);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        String encodedString = Base64.getEncoder().encodeToString(fileContent);
+        System.out.println("data:image/png;base64, "+encodedString);
+    }
+
     public static void imgToBase64(){
         String filePath = "prueba.jpg";
         byte[] fileContent = null;

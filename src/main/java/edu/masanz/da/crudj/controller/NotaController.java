@@ -17,7 +17,6 @@ public class NotaController {
 
     private static NotaService notaService = new NotaService();
 
-
     public static void servirIndice(Context context){
         Map<String, Object> model = new HashMap<>();
         model.put("titulo", "Notas");
@@ -41,6 +40,7 @@ public class NotaController {
         model.put("tieneSiguiente", tieneSiguiente);
         model.put("paginaSiguiente", numeroPagina + 1);
 
+        // me llega un array list de tipo NOTA
         model.put("notas", notaService.obtenerNotas(numeroPagina, NOTAS_POR_PAGINA));
 
         context.render("templates/lista-notas.ftl", model);

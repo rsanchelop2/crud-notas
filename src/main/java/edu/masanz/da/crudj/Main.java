@@ -1,14 +1,13 @@
 package edu.masanz.da.crudj;
 
-import edu.masanz.da.crudj.controller.InventarioController;
-import edu.masanz.da.crudj.controller.NotaController;
-
-import edu.masanz.da.crudj.dao.InventarioDao;
-import io.javalin.Javalin;
-import io.javalin.rendering.template.JavalinFreemarker;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import edu.masanz.da.crudj.controller.InventarioController;
+import edu.masanz.da.crudj.controller.NotaController;
+import edu.masanz.da.crudj.dao.InventarioDAO;
+import io.javalin.Javalin;
+import io.javalin.rendering.template.JavalinFreemarker;
 
 public class Main {
 
@@ -23,7 +22,7 @@ public class Main {
             config.fileRenderer(new JavalinFreemarker());
         }).start(8080);
 
-        InventarioDao.inicializarInventario();
+        InventarioDAO.inicializarInventario();
 
         // PRINCIPAL
         app.get("/", NotaController::servirIndice);

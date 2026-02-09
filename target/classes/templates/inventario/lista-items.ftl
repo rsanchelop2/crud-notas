@@ -13,7 +13,20 @@
 </div>
 <br/><br/>
 <div>
-    <table id="items">
+    <div style="positiom: relative;">
+        <#list items as item>
+            ${item.id}
+            
+            <div>
+                <img class="imt-item" src="..\..\public\imgs\images.jpg">
+            </div>
+            <div>
+                <span class="name-item">${item.nombre}</span>
+                <span class="name-item">${item.cantidad}</span>
+            </div>
+        </#list>
+    </div>
+    <#-- modo antiguo>
         <tbody>
             <tr>
                 <th>ID</th>
@@ -32,7 +45,7 @@
                 </tr>
             </#list>
         </tbody>
-    </table>
+    </table>  -->
 </div>
 </body>
 </html>

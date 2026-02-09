@@ -1,24 +1,22 @@
 package edu.masanz.da.crudj.controller;
 
-import edu.masanz.da.crudj.dao.InventarioDao;
-import edu.masanz.da.crudj.dto.Item;
-import edu.masanz.da.crudj.util.ImageConvertor;
-import io.javalin.http.Context;
-import io.javalin.http.UploadedFile;
-import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import edu.masanz.da.crudj.dao.InventarioDAO;
+import edu.masanz.da.crudj.dto.Item;
+import io.javalin.http.Context;
+import io.javalin.http.UploadedFile;
+
 public class InventarioController {
 
     public static void listarItems(Context context) {
         Map<String, Object> model = new HashMap<>();
 
-        List<Item> objetos = InventarioDao.obtenerItems();
+        List<Item> objetos = InventarioDAO.obtenerItems();
         model.put("items", objetos);
 
         context.render("templates/inventario/lista-items.ftl", model);
@@ -30,7 +28,7 @@ public class InventarioController {
         Map<String, String> pathParams = context.pathParamMap();
         if(pathParams.containsKey("id")){
             int id = Integer.parseInt(context.pathParam("id"));
-            Item item = InventarioDao.obtenerItem(id);
+            Item item = InventarioDAO.obtenerItem(id);
             model.put("item", item);
         }
 
@@ -45,7 +43,7 @@ public class InventarioController {
         UploadedFile imagen = context.uploadedFile("imagen");
         System.out.println(imagen.toString());
 
-        InventarioDao.actualizarItem(new Item(id, nombre, cantidad));
+        InventarioDAO.actualizarItem(new Item(id, nombre, cantidad));
 
         context.redirect("/lista-items");
     }
@@ -66,14 +64,14 @@ public class InventarioController {
             }
         }
 
-        InventarioDao.crearItem(nombreItem, cantidad, textoImagen);
+        InventarioDAO.crearItem(nombreItem, cantidad, textoImagen);
 
         context.redirect("/lista-items");
     }
 
     public static void eliminarItem(Context context) {
         int id = Integer.parseInt(context.pathParam("id"));
-        InventarioDao.eliminarItem(id);
+        InventarioDAO.eliminarItem(id);
         context.redirect("/lista-items");
     }
 }

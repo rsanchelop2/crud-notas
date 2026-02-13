@@ -5,7 +5,6 @@ import java.util.List;
 
 import edu.masanz.da.crudj.database.ConnectionManager;
 import edu.masanz.da.crudj.dto.Item;
-import edu.masanz.da.crudj.dto.Nota;
 
 public class InventarioDaoDb{
 
@@ -13,40 +12,39 @@ public class InventarioDaoDb{
         ConnectionManager.conectar("crud_db", "proy", "password");
     }
 
-    public int obtenerNumeroNotas() {
+    public int obtenerNumeroItems() {
         String sql = "SELECT COUNT(*) FROM notas";
         Object[] params = {};
         Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql, params);
         if (resultado != null && resultado.length == 1) {
-            int numeroNotas = Integer.parseInt(resultado[0][0].toString());
-            return numeroNotas;
+            int numeroItems = Integer.parseInt(resultado[0][0].toString());
+            return numeroItems;
         }
         return 0;
     }
 
 
-    public List<Nota> obtenerNotas(int pagina, int notasPorPagina) {
-        String sql = "SELECT id, titulo, contenido, creado, modificado " +
-                     "FROM notas ORDER BY id DESC LIMIT ? OFFSET ?";
-        Long limite = (long) notasPorPagina;
-        Long offset = (long) ((pagina-1)*notasPorPagina);
+    public static List<Item> obtenerItems(int pagina, int ItemsPorPagina) {
+        String sql = "SELECT id, nombre, cantidad, imagen" +
+                     "FROM items ORDER BY id DESC LIMIT ? OFFSET ?";
+        Long limite = (long) ItemsPorPagina;
+        Long offset = (long) ((pagina-1)*ItemsPorPagina);
         Object[] params = {limite, offset};
         Object[][] resultado = ConnectionManager.ejecutarSelectSQL(sql, params);
-        List<Nota> notas = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
         if (resultado != null) {
             for (Object[] fila : resultado) {
-                Nota nota = new Nota();
+                Item item = new Item();
 
-                nota.setId((Long) fila[0]);
-                nota.setTitulo((String) fila[1]);
-                nota.setContenido((String) fila[2]);
-                nota.setCreado((String) fila[3]);
-                nota.setModificado((String) fila[4]);
+                item.setId((Long) fila[0]);
+                item.setNombre((String) fila[1]);
+                item.setCantidad((int) fila[2]);
+                item.setCantidad((int) fila[3]);
 
-                notas.add(nota);
+                items.add(item);
             }
         }
-        return notas;
+        return items;
     }
 
 
@@ -64,11 +62,10 @@ public class InventarioDaoDb{
                 item.setCantidad((Integer) resultado[0][2]);
                 item.setImagen((String) resultado[0][3]);
                 // aqui falta codigo
+                return item;
             }
+        
             
-            
-
-            return item;
         }
         return null;
 
@@ -83,20 +80,14 @@ public class InventarioDaoDb{
     }
 
 
-
-
-
-    
-
-
-    public Nota guardarNota(Nota nota) {
-        String sql = "INSERT INTO notas (titulo, contenido, creado, modificado) VALUES (?, ?, ?, ?)";
-        Object[] params = {nota.getTitulo(), nota.getContenido(), nota.getCreado(), nota.getModificado()};
-        long id = ConnectionManager.ejecutarInsertSQL(sql, params);
+    public Item guardarItem(Item item) {
+        String sql = "INSERT INTO notas (titulo, cantidad, imagen) VALUES (?, ?, ?)";
+        Object[] params = {item.getNombre(), item.getCantidad(), item.getImagen()};
+        int id = (int) ConnectionManager.ejecutarInsertSQL(sql, params);
         if (id > 0){
-            nota.setId(id);
+            item.setId(id);
         }
-        return nota;
+        return item;
     }
 
     

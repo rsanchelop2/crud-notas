@@ -1,6 +1,7 @@
 package edu.masanz.da.crudj.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +20,14 @@ public class InventarioController {
         List<Item> objetos = InventarioDAO.obtenerItems();
         model.put("items", objetos);
 
-        context.render("templates/inventario/lista-items.ftl", model);
+        // AQUI FALTA CODIGO PARA DEVOLVER ITEMS VACIONS PARA PINTAR EL INVENTARIO
+        List<String> slotsVacios = new ArrayList<>();
+
+        if(objetos.size() > 18){
+            slotsVacios.add("");
+        }
+
+        model.put("itemsInventario", objetos);
     }
 
     public static void servirItem(Context context) {
@@ -32,7 +40,7 @@ public class InventarioController {
             model.put("item", item);
         }
 
-        context.render("templates/inventario/form-item.ftl", model);
+        context.render("templates/new-index.ftl", model);
     }
 
     public static void editarItem(Context context) {
@@ -45,7 +53,7 @@ public class InventarioController {
 
         InventarioDAO.actualizarItem(new Item(id, nombre, cantidad));
 
-        context.redirect("/lista-items");
+        context.redirect("/inventario");
     }
 
     public static void crearItem(Context context) {

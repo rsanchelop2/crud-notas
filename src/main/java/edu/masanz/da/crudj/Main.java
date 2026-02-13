@@ -23,6 +23,7 @@ public class Main {
         }).start(8080);
 
         InventarioDAO.inicializarInventario();
+    
 
         // PRINCIPAL
         app.get("/", NotaController::servirIndice);
@@ -36,6 +37,7 @@ public class Main {
         app.get("/elimina-nota/{id}", NotaController::servirEliminarNota);
         app.post("/elimina-nota/{id}", NotaController::eliminarNota);
         app.get("/error", NotaController::servirError);
+        
         // ITEMS
         app.get("/lista-items", InventarioController::listarItems);
         app.get("/edita-item/{id}", InventarioController::servirItem);
@@ -44,6 +46,11 @@ public class Main {
         app.post("/crea-item", InventarioController::crearItem);
         app.get("/elimina-item/{id}", InventarioController::eliminarItem);
 
+
+        // nuevo inventario
+
+        app.get("/inventario", InventarioController::listarItems);
+        app.get("/inventario/{id}", InventarioController::listarItems);
     }
 
 }

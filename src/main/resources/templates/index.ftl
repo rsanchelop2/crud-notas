@@ -11,6 +11,7 @@
         <p class="center">Acceso a la aplicación</p>
         <a class="center" href="/lista-notas">Notas</a>
         <a class="center" href="/lista-items">Inventario</a>
+        <a class="center" href="/inventario">Inventario Examen</a>
     </div>
 </body>
 </html>

@@ -13,26 +13,28 @@
 </div>
 <br/><br/>
 <div>
-    <table id="items">
-        <tbody>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Cantidad</th>
-                <th>Actualizar</th>
-                <th>Eliminar</th>
-            </tr>
-            <#list items as item>
-                <tr>
-                    <td>${item.id}</td>
-                    <td>${item.nombre}</td>
-                    <td>${item.cantidad}</td>
-                    <td><a href="/edita-item/${item.id}">Editar</a></td>
-                    <td><a href="/elimina-item/${item.id}">Borrar</a></td>
-                </tr>
-            </#list>
-        </tbody>
-    </table>
+    <!-- MODO MOLON --> 
+    <div style="display: flex;justify-content: center;align-items: center;">
+        <div class="izquierda"><a><</a> </div>
+        <div style="width: 25vw; overflow: hidden;">
+            <div style="display: flex;" class="desplazable">
+                <#assign visibilidad = "inline">
+                <#list items as item>
+                    <div style="width: 25vw;">
+                        <div style="position: relative;">
+                            <img class="img-item" src="${item.imagen}">
+                            <span style="position: relative; top: -4px; left: -15px; color: white; font-weight: bold;">${item.cantidad}</span>
+                        </div>
+                        <div>
+                            <span class="name-item">${item.nombre}</span>(<a href="/edita-item/${item.id}">editar</a>)
+                        </div>
+                    </div>
+                    <#assign visibilidad = "none">
+                </#list>
+            </div>
+        </div>
+        <div> <a class="derecha">></a> </div>
+    </div>
 </div>
 </body>
 </html>

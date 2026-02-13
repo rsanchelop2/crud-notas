@@ -127,3 +127,18 @@ div.center{
 input:disabled {
     text-align: center;
 }
+
+.img-item{
+    width: 25vw;
+    height: 25vw;
+}
+
+.izquierda + div .desplazable{
+    position: relative;
+    right: 0px;
+    transition: right 2s;
+}
+
+.izquierda:hover + div .desplazable{
+    right: 25vw;
+}

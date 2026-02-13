@@ -1,9 +1,10 @@
 package edu.masanz.da.crudj;
 
 import edu.masanz.da.crudj.controller.InventarioController;
+import edu.masanz.da.crudj.controller.ItemsController;
 import edu.masanz.da.crudj.controller.NotaController;
 
-import edu.masanz.da.crudj.dao.InventarioDao;
+import edu.masanz.da.crudj.dao.InventarioDaoDb;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinFreemarker;
 
@@ -23,7 +24,7 @@ public class Main {
             config.fileRenderer(new JavalinFreemarker());
         }).start(8080);
 
-        InventarioDao.inicializarInventario();
+        InventarioDaoDb.inicializarInventario();
 
         // PRINCIPAL
         app.get("/", NotaController::servirIndice);
@@ -38,13 +39,15 @@ public class Main {
         app.post("/elimina-nota/{id}", NotaController::eliminarNota);
         app.get("/error", NotaController::servirError);
         // ITEMS
-        app.get("/lista-items", InventarioController::listarItems);
-        app.get("/edita-item/{id}", InventarioController::servirItem);
-        app.post("/edita-item/{id}", InventarioController::editarItem);
-        app.get("/crea-item", InventarioController::servirItem);
-        app.post("/crea-item", InventarioController::crearItem);
-        app.get("/elimina-item/{id}", InventarioController::eliminarItem);
-
+        app.get("/lista-items", ItemsController::listarItems);
+        app.get("/edita-item/{id}", ItemsController::servirItem);
+        app.post("/edita-item/{id}", ItemsController::editarItem);
+        app.get("/crea-item", ItemsController::servirItem);
+        app.post("/crea-item", ItemsController::crearItem);
+        app.get("/elimina-item/{id}", ItemsController::eliminarItem);
+        // INVENTARIO NUEVO
+        app.get("/inventario", InventarioController::listarItems);
+        app.get("/inventario/{id}", InventarioController::listarItems);
     }
 
 }

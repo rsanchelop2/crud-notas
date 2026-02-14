@@ -10,15 +10,10 @@
         <h1>${encabezado}</h1>
         <p class="center">Acceso a la aplicación</p>
         <a class="center" href="/lista-notas">Notas</a>
-<<<<<<< HEAD
         <br/>
         <a class="center" href="/lista-items">Inventario feo</a>
         <br/>
         <a class="center" href="/inventario">Inventario molon</a>
-=======
-        <a class="center" href="/lista-items">Inventario</a>
-        <a class="center" href="/inventario">Inventario Examen</a>
->>>>>>> rescate-mis-commits
     </div>
 </body>
 </html>

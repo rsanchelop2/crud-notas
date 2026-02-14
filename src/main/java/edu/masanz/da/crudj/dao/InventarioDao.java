@@ -1,14 +1,14 @@
 package edu.masanz.da.crudj.dao;
 
 
-import edu.masanz.da.crudj.dto.Item;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InventarioDAO {
+import edu.masanz.da.crudj.dto.Item;
+
+public class InventarioDao {
 
     public static final String[] NOMBRE_ITEMS = {"Pocion", "Flecha", "Pan", "Bomba", "Cuchillo"};
 

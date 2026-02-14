@@ -13,7 +13,6 @@
 </div>
 <br/><br/>
 <div>
-<<<<<<< HEAD
     <!-- MODO MOLON --> 
     <div style="display: flex;justify-content: center;align-items: center;">
         <div class="izquierda"><a><</a> </div>
@@ -36,41 +35,6 @@
         </div>
         <div> <a class="derecha">></a> </div>
     </div>
-=======
-    <div style="positiom: relative;">
-        <#list items as item>
-            ${item.id}
-            
-            <div>
-                <img class="imt-item" src="..\..\public\imgs\images.jpg">
-            </div>
-            <div>
-                <span class="name-item">${item.nombre}</span>
-                <span class="name-item">${item.cantidad}</span>
-            </div>
-        </#list>
-    </div>
-    <#-- modo antiguo>
-        <tbody>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Cantidad</th>
-                <th>Actualizar</th>
-                <th>Eliminar</th>
-            </tr>
-            <#list items as item>
-                <tr>
-                    <td>${item.id}</td>
-                    <td>${item.nombre}</td>
-                    <td>${item.cantidad}</td>
-                    <td><a href="/edita-item/${item.id}">Editar</a></td>
-                    <td><a href="/elimina-item/${item.id}">Borrar</a></td>
-                </tr>
-            </#list>
-        </tbody>
-    </table>  -->
->>>>>>> rescate-mis-commits
 </div>
 </body>
 </html>

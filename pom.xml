@@ -66,11 +66,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-<<<<<<< HEAD
             <version>2.15.1</version>
-=======
-            <version>2.16.1</version> <!-- Verifica la última versión estable -->
->>>>>>> rescate-mis-commits
         </dependency>
 
     </dependencies>

@@ -1,11 +1,10 @@
 package edu.masanz.da.crudj.service;
 
+import java.util.List;
+
 import edu.masanz.da.crudj.dao.INotaDao;
 import edu.masanz.da.crudj.dao.NotaDaoDb;
 import edu.masanz.da.crudj.dto.Nota;
-import edu.masanz.da.crudj.dao.NotaDaoMap;
-
-import java.util.*;
 
 public class NotaService {
 

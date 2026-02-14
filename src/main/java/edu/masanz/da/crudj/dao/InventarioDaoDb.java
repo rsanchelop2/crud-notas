@@ -1,12 +1,10 @@
 package edu.masanz.da.crudj.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.masanz.da.crudj.database.ConnectionManager;
 import edu.masanz.da.crudj.dto.Item;
-import edu.masanz.da.crudj.dto.Nota;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class InventarioDaoDb {
 

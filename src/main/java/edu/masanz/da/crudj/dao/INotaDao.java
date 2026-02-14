@@ -1,8 +1,8 @@
 package edu.masanz.da.crudj.dao;
 
-import edu.masanz.da.crudj.dto.Nota;
-
 import java.util.List;
+
+import edu.masanz.da.crudj.dto.Nota;
 
 public interface INotaDao {
 

@@ -1,15 +1,14 @@
 package edu.masanz.da.crudj;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import edu.masanz.da.crudj.controller.InventarioController;
 import edu.masanz.da.crudj.controller.ItemsController;
 import edu.masanz.da.crudj.controller.NotaController;
-
 import edu.masanz.da.crudj.dao.InventarioDaoDb;
 import io.javalin.Javalin;
 import io.javalin.rendering.template.JavalinFreemarker;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 public class Main {
 

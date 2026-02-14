@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InventarioDao {
+public class InventarioDAO {
 
     public static final String[] NOMBRE_ITEMS = {"Pocion", "Flecha", "Pan", "Bomba", "Cuchillo"};
 

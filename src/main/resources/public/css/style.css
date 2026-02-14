@@ -126,6 +126,7 @@ div.center{
 }
 input:disabled {
     text-align: center;
+<<<<<<< HEAD
 }
 
 .img-item{
@@ -141,4 +142,6 @@ input:disabled {
 
 .izquierda:hover + div .desplazable{
     right: 25vw;
+=======
+>>>>>>> rescate-mis-commits
 }
